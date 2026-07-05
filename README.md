@@ -1,7 +1,32 @@
-# Traffic Sign Classification Using CNN
+# Traffic Sign Classifier
 
-Please find the Code, Report and Presentation of the project "Traffic Sign Classification Using CNN" done as the 8th Semester Project for college NMAMIT.
+A deep learning project that classifies traffic signs from images.
 
-To run the working prototype created using this model refer: [TSC GUI](https://github.com/kashyapmanu/tcsgui)
+## Features
 
-We were beginners to machine learning when we started this projects and we used to focus mainly on web and app development and other things. Huge thanks to [Murtazahassan](https://www.murtazahassan.com/) for teaching us lot of important aspects of computer vision and machine leanring concepts that came in handy during the tough times we were facing because of pandemic.
+- Convolutional neural network for multi-class classification
+- Data augmentation and preprocessing pipeline
+- Evaluation metrics and visualizations
+
+## Tech Stack
+
+- Python
+- TensorFlow / Keras
+- Jupyter Notebook
+- OpenCV
+
+## Dataset
+
+The model is trained on the German Traffic Sign Recognition Benchmark (GTSRB) or a similar dataset.
+
+## Run
+
+```bash
+pip install -r requirements.txt
+jupyter notebook
+```
+
+## Related Repositories
+
+- [Traffic Sign Classifier GUI](https://github.com/kashyapmanu/traffic-sign-classifier-gui)
+- [Traffic Sign Classifier Report](https://github.com/kashyapmanu/traffic-sign-classifier-report)
