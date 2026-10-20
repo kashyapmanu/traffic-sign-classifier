@@ -1,6 +1,5 @@
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import pandas as pd
+import json
 import pickle
 from sklearn.model_selection import train_test_split
 import cv2
@@ -11,13 +10,10 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.models import Sequential
 import matplotlib.pyplot as plt
 import numpy as np
-from tensorflow.keras.models import model_from_json
 import eel
 import random
 import os
-import tensorflow.compat.v1 as tf
 from datetime import datetime
-tf.disable_v2_behavior()
 
 #import keras
 
@@ -58,10 +54,9 @@ def run_tsc():
 
     # IMPORT THE TRANNIED MODEL
     # load json and create model
-    json_file = open('model.json', 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    model = model_from_json(loaded_model_json)
+    with open('model.json', 'r') as json_file:
+        model_config = json.load(json_file)
+    model = Sequential.from_config(model_config['config'])
     # load weights into new model
     model.load_weights("model.h5")
     print("Loaded model from disk")
@@ -187,7 +182,7 @@ def run_tsc():
                     font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
         # PREDICT IMAGE
         predictions = model.predict(img)
-        classIndex = model.predict_classes(img)
+        classIndex = int(np.argmax(predictions, axis=1)[0])
         probabilityValue = np.amax(predictions)
         if probabilityValue > threshold:
             # print(getCalssName(classIndex))
